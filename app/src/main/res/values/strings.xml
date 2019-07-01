@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name"></string>
+    <string name="ThongBao">Mật khẩu đã được gửi tới điện thoại của quý khách.Vui lòng nhập mật khẩu vào ô sau để đăng nhập</string>
+    <string name="LichSu">Lịch sử</string>
+    <string name="NapTien">Nạp tiền</string>
+    <string name="GoiCuoc">Gói cước</string>
+    <string name="DVhot">DV Hot</string>
+    <string name="HoTro">Hỗ trợ</string>
+    <string name="NoiDung"> Tôi Hủy gói GR1 8h ngày 25/03/2018 nhưng đến 9h ngày 25/03/2018 nhận được thông báo gia hạn thành công. Xin giải đáp giúp tôi. Thời gian gửi: 11h30 26/03/2018</string>
+    <string name="DKthanhcong">Bạn đăng kí gói cước với thông tin như sau</string>
+    <string name="naptienthanhcong">Nạp tiền / Đăng ký thành công</string>
+    <string name="huy">Hủy yêu cầu</string>
+    <string name="dongy">Đồng ý</string>
+    <string name="huybo">Hủy gói thành công</string>
+    <string name="dangkyhoachuy">Bạn yêu cầu đăng ký/hủy gói cước với thông tin như sau :</string>
+    <string name="tieptuc">Để tiếp tục vui lòng nhập  tài khoản/account game</string>
+    <string name="dkthanhcong">Đăng ký gói cước thành công !</string>
+    <string name="Dong">Đóng</string>
+    <string name="Open">Open</string>
+    <string name="Close">Close</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+</resources>

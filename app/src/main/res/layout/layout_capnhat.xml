@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:orientation="vertical">
+
+
+
+
+
+    <TextView
+        android:id="@+id/txtTenCN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nguyễn Công Tuấn"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/colorText"
+        android:layout_marginTop="10dp"
+       />
+
+    <TextView
+        android:id="@+id/txtDTCN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="0886001993"
+        android:textColor="@color/colorText"
+        android:layout_marginTop="6dp"
+        android:layout_marginLeft="20dp"
+       />
+
+    <Button
+        android:id="@+id/btnCapNhat"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:text="Cập nhật"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/custom_button"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="70dp"
+        android:layout_marginLeft="70dp"
+        android:background="@color/colorText"/>
+
+</LinearLayout>
+
+
+    
+
+

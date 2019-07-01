@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBackground"
+
+    >
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/background"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            >
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorWhite"
+                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                android:layout_gravity="center" />
+
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <TextView
+        android:text="Nạp tiền cho game :"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="17dp"
+        android:textSize="@dimen/textsize20dp"
+        android:textColor="@color/colorBlue"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="21dp"
+        android:layout_marginRight="25dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:text="Nhà cung cấp :"
+                android:layout_weight="1"
+                android:textColor="@color/colorText"
+               />
+
+            <Spinner
+                android:id="@+id/spNCCGame"
+                android:layout_width="@dimen/size200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:background="@drawable/custom_spinner"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:layout_weight="1"
+                android:text="Dịch vụ:"
+
+                android:textColor="@color/colorText" />
+
+            <Spinner
+                android:id="@+id/spDichVuGame"
+                android:layout_width="@dimen/size200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:background="@drawable/custom_spinner"></Spinner>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:text="Gói cước :"
+                android:layout_weight="1"
+                android:textColor="@color/colorText" />
+
+            <Spinner
+                android:id="@+id/spGoiCuocGame"
+                android:layout_width="@dimen/size200dp"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="22dp"
+                android:background="@drawable/custom_spinner"
+
+                ></Spinner>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="Số tiền :"
+                android:layout_weight="1"
+                android:textColor="@color/colorText" />
+
+            <EditText
+                android:id="@+id/edtSoTien"
+                android:layout_width="@dimen/size200dp"
+                android:layout_height="30dp"
+
+                android:layout_marginTop="22dp"
+                android:background="@drawable/custom_edittext"
+                android:hint="Text input"
+                ></EditText>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="Account :"
+                android:layout_weight="1"
+                android:textColor="@color/colorText" />
+
+            <EditText
+                android:id="@+id/edtTaiKhoan"
+                android:layout_width="200dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="22dp"
+                android:background="@drawable/custom_edittext"
+                android:hint="Text input"></EditText>
+
+
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/btnNapTien"
+            android:layout_width="140dp"
+            android:layout_height="30dp"
+            android:background="@drawable/custom_button"
+            android:text="Nạp tiền"
+            android:textColor="@color/colorBlue"
+            android:drawableLeft="@drawable/muiten"/>
+
+        <Button
+            android:id="@+id/btnDangKyGoi"
+            android:layout_width="140dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="28dp"
+            android:background="@drawable/custom_button"
+            android:text="Đăng ký gói"
+            android:textColor="@color/colorBlue"
+            android:drawableLeft="@drawable/muiten"/>
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+

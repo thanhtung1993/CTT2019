@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!--Xét màu nền-->
+    <solid android:color="@color/colorBackGround"/>
+    <!--Thuộc tính màu và độ rộng-->
+
+
+    <!-- bán kính đường tròn bo góc -->
+    <corners android:radius="5dp"/>
+
+    <!--size-->
+
+    <padding
+        android:left="15dp"
+        android:right="10dp"
+        />
+
+
+</shape>
