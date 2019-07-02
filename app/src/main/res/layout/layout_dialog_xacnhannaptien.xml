@@ -11,7 +11,14 @@
     >
 
 
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Xác nhận"
+        android:layout_gravity="center"
+        android:textSize="24dp"
+        android:textColor="@color/colorText"
+        android:layout_marginTop="8dp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -23,7 +30,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="@string/DKthanhcong"
+            android:text="Bạn đăng kí gói cước với thông tin như sau :"
+            android:textStyle="bold"
             android:textColor="@color/colorBlue" />
         
         <LinearLayout
@@ -89,25 +97,7 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="5dp">
 
-            <TextView
-                android:text="Chu kỳ cước :"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorBlue"/>
-            <TextView
-                android:text="7 ngày"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorBlue"/>
-
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

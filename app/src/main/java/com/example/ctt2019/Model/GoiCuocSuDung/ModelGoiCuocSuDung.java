@@ -1,150 +1,139 @@
 package com.example.ctt2019.Model.GoiCuocSuDung;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
 public class ModelGoiCuocSuDung {
-    @SerializedName("id")
-    @Expose
-    private Integer id;
-    @SerializedName("code")
-    @Expose
-    private String code;
-    @SerializedName("name")
-    @Expose
-    private String name;
-    @SerializedName("active")
-    @Expose
-    private String active;
-    @SerializedName("descript")
-    @Expose
-    private String descript;
-    @SerializedName("partner_id")
-    @Expose
-    private Integer partnerId;
-    @SerializedName("trans_type")
-    @Expose
-    private Object transType;
-    @SerializedName("channel_type")
-    @Expose
-    private Object channelType;
-    @SerializedName("updated_date")
-    @Expose
-    private Integer updatedDate;
-    @SerializedName("category_id_tyleanchia")
-    @Expose
-    private String categoryIdTyleanchia;
-    @SerializedName("id_tyleanchia")
-    @Expose
-    private String idTyleanchia;
-    @SerializedName("pheduyet")
-    @Expose
-    private String pheduyet;
-    @SerializedName("comment_refuse")
-    @Expose
-    private Object commentRefuse;
+ private String SUB_CODE;
+    private String NAME;
+    private String MSISDN;
+    private String SYNTAX_ID;
+    private String PARTNER_NAME;
+    private String GAMELIST_ID;
+    private String PARTNER_CODE;
+    private String DAY_CIRCLE;
+    private String TIME_START;
+    private String TIME_END;
+    private String CODE;
+    private String LAST_EXPIRED_DATE;
+    private String PRICE;
+    private String LASTDATE_REMIND;
+    private String PREFIX;
 
-    public Integer getId() {
-        return id;
+    public String getPREFIX() {
+        return PREFIX;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setPREFIX(String PREFIX) {
+        this.PREFIX = PREFIX;
     }
 
-    public String getCode() {
-        return code;
+    public String getLASTDATE_REMIND() {
+        return LASTDATE_REMIND;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setLASTDATE_REMIND(String LASTDATE_REMIND) {
+        this.LASTDATE_REMIND = LASTDATE_REMIND;
     }
 
-    public String getName() {
-        return name;
+    public String getPRICE() {
+        return PRICE;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPRICE(String PRICE) {
+        this.PRICE = PRICE;
     }
 
-    public String getActive() {
-        return active;
+    public String getSUB_CODE() {
+        return SUB_CODE;
     }
 
-    public void setActive(String active) {
-        this.active = active;
+    public void setSUB_CODE(String SUB_CODE) {
+        this.SUB_CODE = SUB_CODE;
     }
 
-    public String getDescript() {
-        return descript;
+    public String getNAME() {
+        return NAME;
     }
 
-    public void setDescript(String descript) {
-        this.descript = descript;
+    public void setNAME(String NAME) {
+        this.NAME = NAME;
     }
 
-    public Integer getPartnerId() {
-        return partnerId;
+    public String getMSISDN() {
+        return MSISDN;
     }
 
-    public void setPartnerId(Integer partnerId) {
-        this.partnerId = partnerId;
+    public void setMSISDN(String MSISDN) {
+        this.MSISDN = MSISDN;
     }
 
-    public Object getTransType() {
-        return transType;
+    public String getSYNTAX_ID() {
+        return SYNTAX_ID;
     }
 
-    public void setTransType(Object transType) {
-        this.transType = transType;
+    public void setSYNTAX_ID(String SYNTAX_ID) {
+        this.SYNTAX_ID = SYNTAX_ID;
     }
 
-    public Object getChannelType() {
-        return channelType;
+    public String getPARTNER_NAME() {
+        return PARTNER_NAME;
     }
 
-    public void setChannelType(Object channelType) {
-        this.channelType = channelType;
+    public void setPARTNER_NAME(String PARTNER_NAME) {
+        this.PARTNER_NAME = PARTNER_NAME;
     }
 
-    public Integer getUpdatedDate() {
-        return updatedDate;
+    public String getGAMELIST_ID() {
+        return GAMELIST_ID;
     }
 
-    public void setUpdatedDate(Integer updatedDate) {
-        this.updatedDate = updatedDate;
+    public void setGAMELIST_ID(String GAMELIST_ID) {
+        this.GAMELIST_ID = GAMELIST_ID;
     }
 
-    public String getCategoryIdTyleanchia() {
-        return categoryIdTyleanchia;
+    public String getPARTNER_CODE() {
+        return PARTNER_CODE;
     }
 
-    public void setCategoryIdTyleanchia(String categoryIdTyleanchia) {
-        this.categoryIdTyleanchia = categoryIdTyleanchia;
+    public void setPARTNER_CODE(String PARTNER_CODE) {
+        this.PARTNER_CODE = PARTNER_CODE;
     }
 
-    public String getIdTyleanchia() {
-        return idTyleanchia;
+    public String getDAY_CIRCLE() {
+        return DAY_CIRCLE;
     }
 
-    public void setIdTyleanchia(String idTyleanchia) {
-        this.idTyleanchia = idTyleanchia;
+    public void setDAY_CIRCLE(String DAY_CIRCLE) {
+        this.DAY_CIRCLE = DAY_CIRCLE;
     }
 
-    public String getPheduyet() {
-        return pheduyet;
+    public String getTIME_START() {
+        return TIME_START;
     }
 
-    public void setPheduyet(String pheduyet) {
-        this.pheduyet = pheduyet;
+    public void setTIME_START(String TIME_START) {
+        this.TIME_START = TIME_START;
     }
 
-    public Object getCommentRefuse() {
-        return commentRefuse;
+    public String getTIME_END() {
+        return TIME_END;
     }
 
-    public void setCommentRefuse(Object commentRefuse) {
-        this.commentRefuse = commentRefuse;
+    public void setTIME_END(String TIME_END) {
+        this.TIME_END = TIME_END;
+    }
+
+    public String getCODE() {
+        return CODE;
+    }
+
+    public void setCODE(String CODE) {
+        this.CODE = CODE;
+    }
+
+    public String getLAST_EXPIRED_DATE() {
+        return LAST_EXPIRED_DATE;
+    }
+
+    public void setLAST_EXPIRED_DATE(String LAST_EXPIRED_DATE) {
+        this.LAST_EXPIRED_DATE = LAST_EXPIRED_DATE;
     }
 }

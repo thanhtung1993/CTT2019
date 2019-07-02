@@ -31,19 +31,25 @@
         <activity android:name=".Activity.CapNhatThongTinActivity" />
         <activity
             android:name=".Activity.XacNhanNapTienActivity"
-            android:label="                    Xác nhận "
-            android:theme="@style/Theme.AppCompat.Light.Dialog.MinWidth"
+            android:theme="@style/AlertDialogNoTitle"
 
             />
         <activity
             android:name=".Activity.XacNhanDangKiGoiCuocActivity"
-            android:label="                    Xác nhận "
-            android:theme="@style/Theme.AppCompat.Light.Dialog.MinWidth" />
+            android:theme="@style/AlertDialogNoTitle"/>
         <activity android:name=".Activity.BinhLuanActivity"/>
         <activity android:name=".Activity.HoTroActivity"/>
         <activity android:name=".Activity.TraLoiHoTroActivity"/>
+        <activity android:name=".Diaglog.DiaglogDelete"
+            android:theme="@style/AlertDialogNoTitle"
 
-
+            />
+        <activity android:name=".Diaglog.DiaglogThongBaoThanhCong"
+            android:theme="@style/AlertDialogNoTitle"/>
+        <activity android:name=".Diaglog.DiaglogXacNhanDangKyGoiCuoc"
+            android:theme="@style/AlertDialogNoTitle"/>
+        <activity android:name=".Diaglog.DiaglogXacNhanThanhCong"
+            android:theme="@style/AlertDialogNoTitle"/>
 
 
     </application>

@@ -1,6 +1,7 @@
 package com.example.ctt2019.Adapter.AdapterDichVuHot;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,18 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.ctt2019.API.RetroClient;
+import com.example.ctt2019.Diaglog.DiaglogXacNhanDangKyGoiCuoc;
 import com.example.ctt2019.Model.DichVuHot.ModelDichVuHot;
 import com.example.ctt2019.R;
-import com.google.gson.JsonObject;
 
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 
 public class AdapterDichVuHot  extends RecyclerView.Adapter<AdapterDichVuHot.ViewHolderDVH> {
@@ -28,6 +23,7 @@ public class AdapterDichVuHot  extends RecyclerView.Adapter<AdapterDichVuHot.Vie
 
     String SUB_CODE;
     String CODE;
+    String token,thoiGian;
 
     public AdapterDichVuHot(Context context, List<ModelDichVuHot> dichVuHotList) {
         this.context = context;
@@ -49,33 +45,6 @@ public class AdapterDichVuHot  extends RecyclerView.Adapter<AdapterDichVuHot.Vie
 
         }
     }
-
-    private void dangKyThanhCong() {
-        JsonObject object=new JsonObject();
-        object.addProperty("command","REGISTER");
-        object.addProperty("tocken","tocken");
-        object.addProperty("checksum","checksum");
-        object.addProperty("msisdn","0934435389");
-
-        object.addProperty("cpcode","GR");
-        object.addProperty("servicecode",CODE);
-        object.addProperty("subcode",SUB_CODE);
-        object.addProperty("shortcode","9029_GR");
-
-        RetroClient.register_unregister(object, new Callback<JsonObject>() {
-            @Override
-            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                Toast.makeText(context,"Đăng ký thành công",Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onFailure(Call<JsonObject> call, Throwable t) {
-
-            }
-        });
-
-    }
-
 
     @NonNull
     @Override
@@ -110,8 +79,17 @@ public class AdapterDichVuHot  extends RecyclerView.Adapter<AdapterDichVuHot.Vie
             public void onClick(View v) {
                 SUB_CODE=dichVuHot.getSUBCODE();
                 CODE=dichVuHot.getCODE();
-                Toast.makeText(context,"Bạn chọn"+CODE,Toast.LENGTH_LONG).show();
-                dangKyThanhCong();
+
+                Intent intent=new Intent(context, DiaglogXacNhanDangKyGoiCuoc.class);
+                intent.putExtra("1",dichVuHot.getNAME());
+                intent.putExtra("2",dichVuHot.getSUBCODE());
+                intent.putExtra("3",dichVuHot.getPRICE());
+                intent.putExtra("4",dichVuHot.getDAYCIRCLE());
+                intent.putExtra("5",dichVuHot.getPARTNERNAME());
+                intent.putExtra("token",token);
+                intent.putExtra("time",thoiGian);
+                context.startActivity(intent);
+
 
 
 
@@ -127,5 +105,13 @@ public class AdapterDichVuHot  extends RecyclerView.Adapter<AdapterDichVuHot.Vie
         return dichVuHotList.size();
     }
 
+    public void setData(String data) {
 
+        token=data;
+    }
+    public void setTime(String time)
+
+    {
+        thoiGian=time;
+    }
 }

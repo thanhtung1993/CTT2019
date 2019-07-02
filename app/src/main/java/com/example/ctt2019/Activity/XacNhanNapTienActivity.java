@@ -15,15 +15,15 @@ import android.widget.TextView;
 import com.example.ctt2019.R;
 
 public class XacNhanNapTienActivity extends AppCompatActivity implements View.OnClickListener {
+    String token;
     Button btnHuy, btnDongY;
-    TextView txtTenGoiCuocXN,txtDichVuGame,txtSoTienXN,txtTaiKhoanXN;
+    TextView txtTenGoiCuocXN,txtDichVuGame,txtSoTienXN,txtTaiKhoanXN,txtNCCXN;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_dialog_xacnhannaptien);
-
-
 
         btnHuy = findViewById(R.id.btnHuyBoNapTien);
         btnDongY = findViewById(R.id.btnNapTienThanhCong);
@@ -31,35 +31,42 @@ public class XacNhanNapTienActivity extends AppCompatActivity implements View.On
         txtDichVuGame=findViewById(R.id.txtDichVuGame);
         txtSoTienXN=findViewById(R.id.txtSoTienXN);
         txtTaiKhoanXN=findViewById(R.id.txtTaiKhoanXN);
+        txtNCCXN=findViewById(R.id.txtNCCXN);
 
-
-
+        getToken();
         btnHuy.setOnClickListener(this);
         btnDongY.setOnClickListener(this);
-        //todo:nhận dữ liệu
+
+    }
+
+
+    private void getToken() {
         Intent intent=getIntent();
-        txtTenGoiCuocXN.setText(intent.getStringExtra("1"));
+        txtTenGoiCuocXN.setText(intent.getStringExtra("3"));
         txtDichVuGame.setText(intent.getStringExtra("2"));
         txtSoTienXN.setText(intent.getStringExtra("4"));
         txtTaiKhoanXN.setText(intent.getStringExtra("5"));
+        txtNCCXN.setText(intent.getStringExtra("1"));
+        token=intent.getStringExtra("token");
 
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btnHuyBoNapTien:
-               Intent iNapTien=new Intent(XacNhanNapTienActivity.this,NapTienGameActivity.class);
-               startActivity(iNapTien);
-                break;
+         case R.id.btnHuyBoNapTien:
+                 Intent iNapTien=new Intent(XacNhanNapTienActivity.this,NapTienGameActivity.class);
+                 iNapTien.putExtra("token",token);
+                 startActivity(iNapTien);
+                 break;
             case R.id.btnNapTienThanhCong:
-                ThongBaoThanhCong();
+                thongBaoThanhCong();
 
                 break;
         }
     }
 
-    private void ThongBaoThanhCong() {
+    private void thongBaoThanhCong() {
         Button btnDong;
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = this.getLayoutInflater();
@@ -70,6 +77,7 @@ public class XacNhanNapTienActivity extends AppCompatActivity implements View.On
             @Override
             public void onClick(View v) {
                 Intent iNapTienGame = new Intent(getApplicationContext(), NapTienGameActivity.class);
+                iNapTienGame.putExtra("token",token);
                 startActivity(iNapTienGame);
             }
         });

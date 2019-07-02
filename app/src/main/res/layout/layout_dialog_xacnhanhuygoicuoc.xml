@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -25,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="@string/DKthanhcong"
+            android:text="@string/HuyGoiCuoc"
             android:textColor="@color/colorBlue" />
 
         <LinearLayout
@@ -40,6 +41,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorBlue"/>
             <TextView
+                android:id="@+id/txtTenGoiCuocXN"
                 android:text="GR1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -60,6 +62,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorBlue"/>
             <TextView
+                android:id="@+id/txtDichVuXN"
                 android:text=" Garena"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -79,6 +82,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorBlue"/>
             <TextView
+                android:id="@+id/txtNCCHuy"
                 android:text="VinaGame"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -99,6 +103,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorBlue"/>
             <TextView
+                android:id="@+id/txtChuKiCuocXN"
                 android:text="7 ngày"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -119,6 +124,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorBlue"/>
             <TextView
+                android:id="@+id/txtGiaTienXN"
                 android:text="5000 VNĐ"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -139,6 +145,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorBlue"/>
             <TextView
+                android:id="@+id/txtTaiKhoanHuyXN"
                 android:text="Vinagame1111111"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

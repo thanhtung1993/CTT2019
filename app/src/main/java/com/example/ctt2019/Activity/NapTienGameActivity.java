@@ -343,6 +343,7 @@ public class NapTienGameActivity extends AppCompatActivity implements View.OnCli
         intent.putExtra("4",edtSoTien.getText().toString());
         intent.putExtra("5",edtTaiKhoan.getText().toString());
 
+
         startActivity(intent);
     }
     @Override
@@ -359,6 +360,7 @@ public class NapTienGameActivity extends AppCompatActivity implements View.OnCli
 
                 case R.id.btnDangKyGoi:
                 Intent iDKgoicuoc=new Intent(NapTienGameActivity.this,XacNhanNapTienActivity.class);
+                iDKgoicuoc.putExtra("token",token);
                 startActivity(iDKgoicuoc);
                 bundle();
                 break;
@@ -389,25 +391,23 @@ public class NapTienGameActivity extends AppCompatActivity implements View.OnCli
         object.addProperty("command","TRAN_9029");
         object.addProperty("tocken","tocken");
         object.addProperty("checksum","checksum");
+        //phone
         object.addProperty("msisdn","0934435389");
         //id ncc : idncc
         object.addProperty("cpid","000044");
         // số tiền
-        object.addProperty("totalamount","1000");
+        object.addProperty("totalamount",edtSoTien.getText().toString());
         //dịch vụ
         object.addProperty("contenid","0000440005");
         //game code của mã game
         object.addProperty("gamecode","TSKHM");
         //tài khoản
-        object.addProperty("account","acountxx");
-
-
-
+        object.addProperty("account",edtTaiKhoan.getText().toString());
 
         RetroClient.register_unregister(object, new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-
+                   thongBaoThanhCong();
             }
 
             @Override
@@ -426,6 +426,7 @@ public class NapTienGameActivity extends AppCompatActivity implements View.OnCli
             @Override
             public void onClick(View v) {
                 Intent iNapTienGame=new Intent(getApplicationContext(),NapTienGameActivity.class);
+                iNapTienGame.putExtra("token",token);
                 startActivity(iNapTienGame);
             }
         });

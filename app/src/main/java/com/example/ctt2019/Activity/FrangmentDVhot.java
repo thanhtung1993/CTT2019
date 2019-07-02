@@ -44,10 +44,6 @@ public class FrangmentDVhot extends Fragment  {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_dvhot,container,false);
 
-
-
-
-
         getToken();
         toolbar=view.findViewById(R.id.toolbar);
         toolbar();
@@ -102,6 +98,8 @@ public class FrangmentDVhot extends Fragment  {
         recyclerView.setLayoutManager(layoutManager);
          AdapterDichVuHot adapterDichVuHot=new AdapterDichVuHot(getContext(),dichVuHotList);
         recyclerView.setAdapter(adapterDichVuHot);
+        adapterDichVuHot.setData(token);
+        adapterDichVuHot.setTime(thoiGian);
 }
 
 

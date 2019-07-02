@@ -2,6 +2,7 @@ package com.example.ctt2019.API;
 
 
 import com.example.ctt2019.Model.DichVuHot.ModelDichVuHot;
+import com.example.ctt2019.Model.GoiCuocSuDung.ModelGoiCuocSuDung;
 import com.example.ctt2019.Model.HoTro.ModelHoTro;
 import com.example.ctt2019.Model.Lichsunaptien.ModelLichSuNapTien;
 import com.example.ctt2019.Model.Lichsusms.ModelSms;
@@ -51,16 +52,26 @@ public class RetroClient {
         call.enqueue(callback);
     }
 
-    public static void getHome(String constr,String psMsisdn,String token, Callback<ResponseBody> callback) {
+    public static void getHome(String constr,String psMsisdn,String token, Callback<List<ModelGoiCuocSuDung>> callback) {
         Map<String, String> headers = new HashMap<>();
         headers.put("Content-Type", "application/json");
         headers.put("Authorization", token);
 
         ApiService apiService = getClient().create(ApiService.class);
-        Call<ResponseBody> call = apiService.listHome(constr, psMsisdn, headers);
+        Call<List<ModelGoiCuocSuDung>> call = apiService.listHome(constr, psMsisdn, headers);
         call.enqueue(callback);
 
 
+    }
+    public static void home(String constr,String psMsisdn,String token, Callback<ResponseBody> callback)
+    {
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Content-Type", "application/json");
+        headers.put("Authorization", token);
+
+        ApiService apiService = getClient().create(ApiService.class);
+        Call<ResponseBody> call=apiService.getHome(constr,psMsisdn,headers);
+        call.enqueue(callback);
     }
 
     public static void lichSuNapTien(String constr, String pStartdate, String pEnddate, String pMsisdn,int psPageno,int psPagerec, String token, Callback<List<ModelLichSuNapTien>> callback) {

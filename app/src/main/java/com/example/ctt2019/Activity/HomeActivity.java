@@ -37,7 +37,7 @@ import retrofit2.Response;
 public class HomeActivity extends AppCompatActivity {
     Toolbar toolbar;
     Drawable drawable;
-    TextView mTitle, txtGioDNHome, txtDTHome, txtTenHome, txtTenGoiCuocHome, txtGiaTienHome, txtChuKiCuoc, txtDichVuHome, txtNCCHome, txtDangKyLanDauHome, txtNgayGiaHanHome, txtTongSoTienDaNap;
+    TextView mTitle,txtCuPhapHuyGoiHome, txtGioDNHome, txtDTHome, txtTenHome, txtTenGoiCuocHome, txtGiaTienHome, txtChuKiCuoc, txtDichVuHome, txtNCCHome, txtDangKyLanDauHome, txtNgayGiaHanHome, txtTongSoTienDaNap;
     String thoiGianHienTai;
     private String token=null;
     BottomNavigationViewEx navigationViewEx;
@@ -114,6 +114,7 @@ public class HomeActivity extends AppCompatActivity {
         txtDangKyLanDauHome =findViewById(R.id.txtDangKyLanDauHome);
         txtNgayGiaHanHome =findViewById(R.id.txtNgayGiaHanHome);
         txtTongSoTienDaNap =findViewById(R.id.txtTongSoTienDaNap);
+        txtCuPhapHuyGoiHome=findViewById(R.id.txtCuPhapHuyGoiHome);
 
         hienThiNutMenu();
 
@@ -233,7 +234,7 @@ public class HomeActivity extends AppCompatActivity {
 
         String constr="get_home";
         String psMsisdn="0987023195";
-        RetroClient.getHome(constr,psMsisdn,token, new Callback<ResponseBody>() {
+        RetroClient.home(constr,psMsisdn,token, new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response != null && response.code() == HttpURLConnection.HTTP_OK) {
@@ -249,13 +250,14 @@ public class HomeActivity extends AppCompatActivity {
                             {
                                // String sodienthoai=object.optString("MSISDN");
                               //  String tennguoidung=object.optString("NAME");
-                                String tengoicuoc=object.optString("VASGATEFTPACCOUNT");
+                                String tengoicuoc=object.optString("SUB_CODE");
                                 String giagoicuoc=object.optString("PRICE");
-                                String chuki=object.optString("FREE_CIRCLE");
+                                String chuki=object.optString("DAY_CIRCLE");
                                 String dichvu=object.optString("NAME");
                                  String ncc=object.optString("PARTNER_NAME");
                                 String dklandau=object.optString("TIME_START");
                                 String giahan=object.optString("LASTDATE_REMIND");
+                                String cuphaphuygoi=object.optString("SYNTAX_ID");
                                 //   String tongtiendanap=object.optString("")
 
 
@@ -269,6 +271,7 @@ public class HomeActivity extends AppCompatActivity {
                                 txtDangKyLanDauHome.setText(dklandau);
                                 txtNgayGiaHanHome.setText(giahan);
                                 txtTongSoTienDaNap.setText("10.000.000 VNĐ");
+                                txtCuPhapHuyGoiHome.setText(cuphaphuygoi);
                             }
                         }
                     } catch (IOException e) {

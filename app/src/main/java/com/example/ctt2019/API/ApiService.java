@@ -2,6 +2,7 @@ package com.example.ctt2019.API;
 
 
 import com.example.ctt2019.Model.DichVuHot.ModelDichVuHot;
+import com.example.ctt2019.Model.GoiCuocSuDung.ModelGoiCuocSuDung;
 import com.example.ctt2019.Model.HoTro.ModelHoTro;
 import com.example.ctt2019.Model.Lichsunaptien.ModelLichSuNapTien;
 import com.example.ctt2019.Model.Lichsusms.ModelSms;
@@ -36,10 +37,14 @@ public interface ApiService {
                              @Field("password") String password);
 
 
-    //todo:home
+    //todo:goicuoc su dung
 
     @GET(Config.SERVER)
-    Call<ResponseBody> listHome(@Query("constr") String constr, @Query("psMsisdn") String psMsisdn, @HeaderMap Map<String,String> header);
+    Call<List<ModelGoiCuocSuDung>> listHome(@Query("constr") String constr, @Query("psMsisdn") String psMsisdn, @HeaderMap Map<String,String> header);
+
+    // get home
+    @GET(Config.SERVER)
+    Call<ResponseBody> getHome (@Query("constr") String constr, @Query("psMsisdn") String psMsisdn, @HeaderMap Map<String,String> header);
 
     //todo:lay lich su sms
     @GET(Config.SERVER)

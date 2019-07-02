@@ -92,7 +92,7 @@ TextView mTitle;
     }
 
     private void getData() {
-        String constr = "get_customer_support_by_msisdn";
+        String constr = "get_customer_support_app";
         String psMsisdn = "0987023195";
 
         RetroClient.get_customer_support(constr, psMsisdn, token, new Callback<List<ModelHoTro>>() {

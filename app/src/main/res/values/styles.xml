@@ -11,5 +11,9 @@
     <style name="capfale" parent="TextAppearance.Design.Tab">
         <item name="textAllCaps">false</item>
     </style>
+    <style name="AlertDialogNoTitle" parent="Theme.AppCompat.Light.Dialog.MinWidth">
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowNoTitle">false</item>
+    </style>
 
 </resources>
