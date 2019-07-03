@@ -46,6 +46,11 @@
                     android:textColor="@color/colorText"/>
 
             </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorBackGround" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -65,6 +70,11 @@
                     android:textColor="@color/colorText"/>
 
             </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorBackGround" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -85,6 +95,11 @@
                     android:textColor="@color/colorText"/>
 
             </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorBackGround" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -104,6 +119,11 @@
                     android:textColor="@color/colorText"/>
 
             </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorBackGround" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -124,6 +144,11 @@
                     android:textColor="@color/colorText"/>
 
             </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorBackGround" />
+
 
             <Button
                 android:id="@+id/btndkdvh"
@@ -131,7 +156,7 @@
                 android:textColor="@color/colorAccent"
                 android:layout_width="153dp"
                 android:layout_height="30dp"
-                android:layout_marginTop="@dimen/textsize20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:drawableLeft="@drawable/dangky"
                 android:background="@drawable/custom_button"/>

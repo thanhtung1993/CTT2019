@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.example.ctt2019.R;
 
 public class XacNhanNapTienActivity extends AppCompatActivity implements View.OnClickListener {
-    String token;
+    String token,thoiGian;
     Button btnHuy, btnDongY;
     TextView txtTenGoiCuocXN,txtDichVuGame,txtSoTienXN,txtTaiKhoanXN,txtNCCXN;
 
@@ -48,6 +48,7 @@ public class XacNhanNapTienActivity extends AppCompatActivity implements View.On
         txtTaiKhoanXN.setText(intent.getStringExtra("5"));
         txtNCCXN.setText(intent.getStringExtra("1"));
         token=intent.getStringExtra("token");
+        thoiGian=intent.getStringExtra("time");
 
     }
 
@@ -57,6 +58,7 @@ public class XacNhanNapTienActivity extends AppCompatActivity implements View.On
          case R.id.btnHuyBoNapTien:
                  Intent iNapTien=new Intent(XacNhanNapTienActivity.this,NapTienGameActivity.class);
                  iNapTien.putExtra("token",token);
+                 iNapTien.putExtra("time",thoiGian);
                  startActivity(iNapTien);
                  break;
             case R.id.btnNapTienThanhCong:
@@ -78,6 +80,7 @@ public class XacNhanNapTienActivity extends AppCompatActivity implements View.On
             public void onClick(View v) {
                 Intent iNapTienGame = new Intent(getApplicationContext(), NapTienGameActivity.class);
                 iNapTienGame.putExtra("token",token);
+                iNapTienGame.putExtra("time",thoiGian);
                 startActivity(iNapTienGame);
             }
         });

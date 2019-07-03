@@ -342,7 +342,8 @@ public class NapTienGameActivity extends AppCompatActivity implements View.OnCli
         intent.putExtra("3",spGoiCuoc);
         intent.putExtra("4",edtSoTien.getText().toString());
         intent.putExtra("5",edtTaiKhoan.getText().toString());
-
+        intent.putExtra("token",token);
+        intent.putExtra("time",thoiGian);
 
         startActivity(intent);
     }
@@ -353,16 +354,18 @@ public class NapTienGameActivity extends AppCompatActivity implements View.OnCli
             case R.id.btnNapTien:
                 napTienThanhCong();
                 Intent inaptienthanhcong=new Intent(NapTienGameActivity.this,XacNhanNapTienActivity.class);
-                inaptienthanhcong.putExtra("token",token);
                 startActivity(inaptienthanhcong);
                 bundle();
+
                 break;
 
                 case R.id.btnDangKyGoi:
                 Intent iDKgoicuoc=new Intent(NapTienGameActivity.this,XacNhanNapTienActivity.class);
-                iDKgoicuoc.putExtra("token",token);
+               // iDKgoicuoc.putExtra("token",token);
+
                 startActivity(iDKgoicuoc);
-                bundle();
+                    bundle();
+
                 break;
 
         }

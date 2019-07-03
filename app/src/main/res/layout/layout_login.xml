@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="@color/colorBackGround"
+
         >
 
         <ImageView
@@ -27,7 +28,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/bgHeader"
-        android:layout_marginTop="-50dp">
+        android:layout_marginTop="-50dp"
+      >
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -35,6 +37,7 @@
             android:layout_marginTop="30dp"
 
             >
+
 
 
             <android.support.v7.widget.CardView
@@ -63,7 +66,8 @@
                         android:textStyle="bold" />
 
                     <EditText
-                        android:drawableRight="@drawable/loginavatar"
+                        android:drawableLeft="@drawable/loginavatar"
+                        android:drawablePadding="20dp"
                         android:id="@+id/edtdangnhap"
                         android:layout_width="match_parent"
                         android:layout_height="35dp"
@@ -98,7 +102,8 @@
                         android:id="@+id/edtmatkhau"
                         android:layout_width="match_parent"
                         android:layout_height="35dp"
-                        android:drawableRight="@drawable/lock"
+                        android:drawableLeft="@drawable/lock"
+                        android:drawablePadding="20dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@drawable/bg_edt_login"
