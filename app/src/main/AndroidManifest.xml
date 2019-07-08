@@ -37,7 +37,6 @@
         <activity
             android:name=".Activity.XacNhanDangKiGoiCuocActivity"
             android:theme="@style/AlertDialogNoTitle"/>
-        <activity android:name=".Activity.BinhLuanActivity"/>
         <activity android:name=".Activity.HoTroActivity"/>
         <activity android:name=".Activity.TraLoiHoTroActivity"/>
         <activity android:name=".Diaglog.DiaglogDelete"
@@ -49,6 +48,9 @@
         <activity android:name=".Diaglog.DiaglogXacNhanDangKyGoiCuoc"
             android:theme="@style/AlertDialogNoTitle"/>
         <activity android:name=".Diaglog.DiaglogXacNhanThanhCong"
+            android:theme="@style/AlertDialogNoTitle"/>
+        <activity android:name=".Activity.SuaHoTroActivity"/>
+        <activity android:name=".Activity.XacNhanXoaActivity"
             android:theme="@style/AlertDialogNoTitle"/>
 
 

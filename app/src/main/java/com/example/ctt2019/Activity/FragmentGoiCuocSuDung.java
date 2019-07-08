@@ -41,7 +41,6 @@ public class FragmentGoiCuocSuDung extends Fragment {
 
         getToken();
         toolbar = view.findViewById(R.id.toolbar);
-
         toolbar();
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +61,7 @@ public class FragmentGoiCuocSuDung extends Fragment {
     public void getData() {
         final String constr = "get_home";
         String psMsisdn = "0987023195";
-        RetroClient.getHome(constr, psMsisdn, token, new Callback<List<ModelGoiCuocSuDung>>() {
+        RetroClient.goiCuocHot(constr, psMsisdn, token, new Callback<List<ModelGoiCuocSuDung>>() {
             @Override
             public void onResponse(Call<List<ModelGoiCuocSuDung>> call, Response<List<ModelGoiCuocSuDung>> response) {
                 goiCuocSuDungList=response.body();

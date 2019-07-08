@@ -3,6 +3,7 @@ package com.example.ctt2019.API;
 
 import com.example.ctt2019.Model.DichVuHot.ModelDichVuHot;
 import com.example.ctt2019.Model.GoiCuocSuDung.ModelGoiCuocSuDung;
+import com.example.ctt2019.Model.HoTro.ModelBinhLuan;
 import com.example.ctt2019.Model.HoTro.ModelHoTro;
 import com.example.ctt2019.Model.Lichsunaptien.ModelLichSuNapTien;
 import com.example.ctt2019.Model.Lichsusms.ModelSms;
@@ -40,8 +41,11 @@ public interface ApiService {
     //todo:goicuoc su dung
 
     @GET(Config.SERVER)
-    Call<List<ModelGoiCuocSuDung>> listHome(@Query("constr") String constr, @Query("psMsisdn") String psMsisdn, @HeaderMap Map<String,String> header);
-
+    Call<ResponseBody> listHome(@Query("constr") String constr, @Query("psMsisdn") String psMsisdn, @HeaderMap Map<String,String> header);
+  //
+    @GET(Config.SERVER)
+    Call<List<ModelGoiCuocSuDung>> goiCuocHot(@Query("constr") String constr, @Query("psMsisdn") String psMsisdn, @HeaderMap Map<String,String> header);
+    //
     // get home
     @GET(Config.SERVER)
     Call<ResponseBody> getHome (@Query("constr") String constr, @Query("psMsisdn") String psMsisdn, @HeaderMap Map<String,String> header);
@@ -78,7 +82,14 @@ public interface ApiService {
     @GET(Config.SERVER)
     Call<List<ModelHoTro>> get_customer_support(@Query("constr") String constr,
                                                 @Query("psMsisdn") String psMsisdn,
+                                                @Query("psPageno") int psPageno,
+                                                @Query("psPagerec") int psPagerec,
                                                 @HeaderMap Map<String, String> headers);
+
+    @GET(Config.SERVER)
+    Call<ResponseBody> getAllSupport(@Query("constr") String constr,
+                                     @Query("psMsisdn") String psMsisdn,
+                                     @HeaderMap Map<String, String> headers);
 
 
     //todo:NCC hỗ trợ
@@ -105,7 +116,7 @@ public interface ApiService {
     Call<ResponseBody> get_customer_infor(@Query("constr") String constr,
                                           @Query("psMsisdn") String psMsisdn,
                                           @HeaderMap Map<String, String> headers);
-    //todo:Cập nhật thông tin/Thêm hỗ trợ
+    //todo:Cập nhật thông tin/Thêm hỗ trợ/thêm bình luận
     @POST(Config.UPDATE_INSERT)
     Call<JsonObject> update_infor(@Body JsonObject body,
                                   @HeaderMap Map<String, String> headers);
@@ -115,6 +126,29 @@ public interface ApiService {
     @Headers({"Content-Type:application/json"})
     @POST(Config.REGISTER_UNREGISTER)
     Call<JsonObject> register_unregister(@Body JsonObject object);
+
+    //todo:thêm bình luận hỗ trợ
+    @GET(Config.SERVER)
+    Call<List<ModelBinhLuan>> layToanBoBinhLuan(@Query("constr") String constr,
+                                                @Query("psMsisdn") String psMsisdn,
+                                                @Query("psParent_id") String psParent_id,
+                                                @HeaderMap Map<String, String> headers);
+
+
+
+    //todo: đếm bình luận
+     @GET(Config.SERVER)
+    Call<ResponseBody> demBinhLuan(@Query("constr") String constr,
+                                   @Query("psParent_id") String psParent_id,
+                                   @HeaderMap Map<String, String> headers);
+
+     //todo: edit hỗ trợ lấy toàn bộ thoogn tin
+    @GET(Config.SERVER)
+    Call<ResponseBody> layToanBoHoTro(
+            @Query("constr") String constr,
+            @Query("psId") String psId,
+            @HeaderMap Map<String, String> headers);
+
 
 
 

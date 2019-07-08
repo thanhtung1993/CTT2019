@@ -6,16 +6,19 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackGround">
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbarthembinhluan"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorBlue1" >
+        android:background="@color/colorBlue1"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
         <TextView
-            android:id="@+id/toolbar_title"
+            android:id="@+id/toolbar_titlebinhluan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorWhite"
@@ -23,56 +26,67 @@
             android:layout_gravity="center" />
     </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
-    <RelativeLayout
 
+    <RelativeLayout
+        android:id="@+id/relativelayout3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="60dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appbar"
+        android:layout_marginTop="0dp"
         android:layout_marginBottom="10dp">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rcTraLoi"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+            android:layout_height="600dp"
+            android:layout_marginBottom="50dp">
 
-        <RelativeLayout
-
-            android:layout_marginTop="15dp"
-            android:id="@+id/relativelayout1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true">
-
-
-
-            <EditText
-                android:id="@+id/edtThemHoTro"
-                android:layout_width="320dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/custom_edittext"/>
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_toRightOf="@+id/edtThemHoTro"
-
-                android:layout_width="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/imgSend"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:scaleType="fitCenter"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/buttonsendd"
-                    />
-
-            </LinearLayout>
-
-        </RelativeLayout>
-
+        </android.support.v7.widget.RecyclerView>
 
 
     </RelativeLayout>
+    <LinearLayout
+
+        android:id="@+id/relativelayout1"
+        android:orientation="horizontal"
+        android:background="@color/colorBackGround"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp">
+
+
+        <EditText
+            android:id="@+id/edtThemHoTro"
+            android:layout_width="320dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/custom_edittext"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/edtThemHoTro"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnSend"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/custom_button1"
+                android:text="Gửi"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/colorWhite"
+                android:scaleType="fitCenter" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </RelativeLayout>

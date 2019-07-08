@@ -234,7 +234,7 @@ public class HomeActivity extends AppCompatActivity {
 
         String constr="get_home";
         String psMsisdn="0987023195";
-        RetroClient.home(constr,psMsisdn,token, new Callback<ResponseBody>() {
+        RetroClient.getHome(constr,psMsisdn,token, new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response != null && response.code() == HttpURLConnection.HTTP_OK) {

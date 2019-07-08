@@ -74,8 +74,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnLogin:
-          // Intent idangnhap=new Intent(LoginActivity.this,HomeActivity.class);
-           //   startActivity(idangnhap);
+              //  Intent idangnhap=new Intent(LoginActivity.this,HomeActivity.class);
+              //  startActivity(idangnhap);
                 dangNhap();
                 layThoiGianHienTai();
                 break;

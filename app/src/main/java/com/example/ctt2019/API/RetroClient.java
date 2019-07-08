@@ -1,8 +1,8 @@
 package com.example.ctt2019.API;
 
-
 import com.example.ctt2019.Model.DichVuHot.ModelDichVuHot;
 import com.example.ctt2019.Model.GoiCuocSuDung.ModelGoiCuocSuDung;
+import com.example.ctt2019.Model.HoTro.ModelBinhLuan;
 import com.example.ctt2019.Model.HoTro.ModelHoTro;
 import com.example.ctt2019.Model.Lichsunaptien.ModelLichSuNapTien;
 import com.example.ctt2019.Model.Lichsusms.ModelSms;
@@ -35,6 +35,7 @@ public class RetroClient {
         return retrofit;
     }
 
+
     public static void login(String username, String pass, Callback<ResponseBody> callback) {
         ApiService apiService = getClient().create(ApiService.class);
         Call<ResponseBody> call = apiService.login(username, pass);
@@ -52,26 +53,16 @@ public class RetroClient {
         call.enqueue(callback);
     }
 
-    public static void getHome(String constr,String psMsisdn,String token, Callback<List<ModelGoiCuocSuDung>> callback) {
+    public static void getHome(String constr,String psMsisdn,String token, Callback<ResponseBody> callback) {
         Map<String, String> headers = new HashMap<>();
         headers.put("Content-Type", "application/json");
         headers.put("Authorization", token);
 
         ApiService apiService = getClient().create(ApiService.class);
-        Call<List<ModelGoiCuocSuDung>> call = apiService.listHome(constr, psMsisdn, headers);
+        Call<ResponseBody> call = apiService.listHome(constr, psMsisdn, headers);
         call.enqueue(callback);
 
 
-    }
-    public static void home(String constr,String psMsisdn,String token, Callback<ResponseBody> callback)
-    {
-        Map<String, String> headers = new HashMap<>();
-        headers.put("Content-Type", "application/json");
-        headers.put("Authorization", token);
-
-        ApiService apiService = getClient().create(ApiService.class);
-        Call<ResponseBody> call=apiService.getHome(constr,psMsisdn,headers);
-        call.enqueue(callback);
     }
 
     public static void lichSuNapTien(String constr, String pStartdate, String pEnddate, String pMsisdn,int psPageno,int psPagerec, String token, Callback<List<ModelLichSuNapTien>> callback) {
@@ -95,13 +86,13 @@ public class RetroClient {
 
     }
 
-    public static void get_customer_support(String constr, String psMsisdn, String token, Callback<List<ModelHoTro>> callback) {
+    public static void get_customer_support(String constr, String psMsisdn, int psPageno,int psPagerec, String token, Callback<List<ModelHoTro>> callback) {
         Map<String, String> hoTro = new HashMap<>();
         hoTro.put("Content-Type", "application/json");
         hoTro.put("Authorization", token);
 
         ApiService apiService = getClient().create(ApiService.class);
-        Call<List<ModelHoTro>> call = apiService.get_customer_support(constr, psMsisdn,hoTro);
+        Call<List<ModelHoTro>> call = apiService.get_customer_support(constr, psMsisdn,psPageno,psPagerec,hoTro);
         call.enqueue(callback);
     }
 
@@ -150,7 +141,7 @@ public class RetroClient {
 
 
 
-    public static void update(JsonObject body,String token,Callback<JsonObject> callback)
+    public static void update(JsonObject body, String token, Callback<JsonObject> callback)
     {
         Map<String, String> info = new HashMap<>();
         info.put("Content-Type", "application/json");
@@ -170,21 +161,55 @@ public class RetroClient {
         call.enqueue(callback);
     }
 
+    //todo: đếm bình luận
+    public static void demBinhLuan(String constr,String psParent_id,String token,Callback<ResponseBody> callback)
+    {
+        Map<String, String> demBinhLuan = new HashMap<>();
+        demBinhLuan.put("Content-Type", "application/json");
+        demBinhLuan.put("Authorization", token);
+
+        ApiService apiService=getClient().create(ApiService.class);
+        Call<ResponseBody> call=apiService.demBinhLuan(constr,psParent_id,demBinhLuan);
+        call.enqueue(callback);
+    }
+
+    //todo:thêm bình luận hỗ trợ
+    public static void themBinhLuanHoTro(String constr, String psMsisdn, String psParent_id, String token, Callback<List<ModelBinhLuan>> callback)
+    {
+        Map<String, String> thembinhluan = new HashMap<>();
+        thembinhluan.put("Content-Type", "application/json");
+        thembinhluan.put("Authorization", token);
+
+        ApiService apiService=getClient().create(ApiService.class);
+        Call<List<ModelBinhLuan>> call=apiService.layToanBoBinhLuan(constr,psMsisdn,psParent_id,thembinhluan);
+        call.enqueue(callback);
+
+    }
+
+    // lấy thông tin gói cước đang sử dụng
+    public static void goiCuocHot(String constr, String psMsisdn,String token, Callback<List<ModelGoiCuocSuDung>> callback)
+    {
+        Map<String, String> thembinhluan = new HashMap<>();
+        thembinhluan.put("Content-Type", "application/json");
+        thembinhluan.put("Authorization", token);
+
+        ApiService apiService=getClient().create(ApiService.class);
+        Call<List<ModelGoiCuocSuDung>> call=apiService.goiCuocHot(constr,psMsisdn,thembinhluan);
+        call.enqueue(callback);
+    }
+
+    public static void suaHoTro(String constr,String psId,String token,Callback<ResponseBody> callback)
+    {
+        Map<String, String> suaHoTro = new HashMap<>();
+        suaHoTro.put("Content-Type", "application/json");
+        suaHoTro.put("Authorization", token);
+
+        ApiService apiService=getClient().create(ApiService.class);
+        Call<ResponseBody> call=apiService.layToanBoHoTro(constr,psId,suaHoTro);
+        call.enqueue(callback);
+
+    }
+
+
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

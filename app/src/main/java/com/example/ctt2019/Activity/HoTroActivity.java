@@ -10,6 +10,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.ctt2019.API.RetroClient;
@@ -24,12 +26,17 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HoTroActivity extends AppCompatActivity {
+public class HoTroActivity extends AppCompatActivity implements View.OnClickListener{
 TextView mTitle;
     RecyclerView recyclerView;
     List<ModelHoTro> modelHoTroArrayList = new ArrayList<>();
     AdapterHoTro adapterHoTro;
     String token,thoigian;
+    Button btnPreviousHoTro,btnNextHoTro;
+    int currentPage;
+    int page=1;
+    LinearLayout linearLayout;
+    TextView txtTrang;
 
     Toolbar toolbar;
     @Override
@@ -39,6 +46,11 @@ TextView mTitle;
 
 
         recyclerView=findViewById(R.id.rccauhoi);
+        btnNextHoTro=findViewById(R.id.btnNextHoTro);
+        btnPreviousHoTro=findViewById(R.id.btnPreviousHoTro);
+        linearLayout=findViewById(R.id.lntieptheo);
+
+
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -47,6 +59,7 @@ TextView mTitle;
         toolbar.setTitle("");
         getToken();
         getData();
+
         HienThiDanhSachHoTro();
 
 
@@ -60,6 +73,9 @@ TextView mTitle;
                 HoTroActivity.this.overridePendingTransition(R.anim.anim_enter,R.anim.anim_exit);
             }
         });
+
+        btnPreviousHoTro.setOnClickListener(this);
+        btnNextHoTro.setOnClickListener(this);
 
     }
 
@@ -94,13 +110,27 @@ TextView mTitle;
     private void getData() {
         String constr = "get_customer_support_app";
         String psMsisdn = "0987023195";
+        int psPageno=currentPage;
+        int psPagerec=3;
 
-        RetroClient.get_customer_support(constr, psMsisdn, token, new Callback<List<ModelHoTro>>() {
+        RetroClient.get_customer_support(constr, psMsisdn,psPageno,psPagerec, token, new Callback<List<ModelHoTro>>() {
             @Override
             public void onResponse(Call<List<ModelHoTro>> call, Response<List<ModelHoTro>> response) {
                 modelHoTroArrayList=response.body();
                 //  Log.i("data",hoTroList.toString());
                 HienThiDanhSachHoTro();
+
+                if (modelHoTroArrayList.size()>0) {
+                    linearLayout.setVisibility(View.VISIBLE);
+                    btnNextHoTro.setVisibility(View.VISIBLE);
+
+                }
+                else
+                {
+                    btnNextHoTro.setVisibility(View.GONE);
+
+
+                }
             }
 
             @Override
@@ -114,7 +144,6 @@ TextView mTitle;
         RecyclerView recyclerView=findViewById(R.id.rccauhoi);
         RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
-        //   AdapterHoTro adapterHoTro=new AdapterHoTro(this,hoTroList);
         AdapterHoTro adapterHoTro=new AdapterHoTro(this,modelHoTroArrayList);
         recyclerView.setAdapter(adapterHoTro);
         adapterHoTro.notifyDataSetChanged();
@@ -124,4 +153,27 @@ TextView mTitle;
     }
 
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId())
+        {
+            case R.id.btnNextHoTro:
+                currentPage=currentPage+1;
+                btnPreviousHoTro.setVisibility(View.VISIBLE);
+                getData();
+                break;
+            case R.id.btnPreviousHoTro:
+                currentPage=currentPage-1;
+
+                if (currentPage>0) {
+                    getData();
+                }
+                else
+                {
+                    btnPreviousHoTro.setVisibility(View.GONE);
+                }
+                break;
+        }
+
     }
+}

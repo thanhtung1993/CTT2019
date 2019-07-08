@@ -275,8 +275,6 @@ public class ThemHoTroActivity extends AppCompatActivity implements View.OnClick
             ArrayAdapter<String> spAdapter=new ArrayAdapter<String>(ThemHoTroActivity.this,android.R.layout.simple_spinner_item,dichVu);
             spDVThemHoTro.setAdapter(spAdapter);
 
-
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -381,7 +379,6 @@ public class ThemHoTroActivity extends AppCompatActivity implements View.OnClick
             case R.id.btnGuiYeuCauThemHoTro:
 
                 themHoTro();
-
                 Intent intent=new Intent(ThemHoTroActivity.this,HoTroActivity.class);
                 intent.putExtra("token",token);
                 intent.putExtra("time",thoigian);

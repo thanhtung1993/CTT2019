@@ -32,8 +32,10 @@ import com.example.ctt2019.Model.Lichsunaptien.ModelLichSuNapTien;
 import com.example.ctt2019.Model.Lichsusms.ModelSms;
 import com.example.ctt2019.R;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -42,7 +44,6 @@ import retrofit2.Response;
 
 public class FragmentLichSu  extends Fragment implements View.OnClickListener{
     TextView mTitle;
-
     Button btnLichSuNapTien,btnLichSuSMS;
     ImageButton imgTuNgay,imgDenNgay;
     FrameLayout frLichSuNapTien,frLichSuSms;
@@ -54,6 +55,8 @@ public class FragmentLichSu  extends Fragment implements View.OnClickListener{
     private String token=null;
     LinearLayout lntieptheo;
     String thoiGian;
+    Toolbar toolbar;
+    SimpleDateFormat sdf;
 
     //******************************
     public int currentPage = 1;
@@ -62,7 +65,7 @@ public class FragmentLichSu  extends Fragment implements View.OnClickListener{
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_lichsu, container, false);
-        Toolbar toolbar=view.findViewById(R.id.toolbar);
+        toolbar=view.findViewById(R.id.toolbar);
         btnLichSuNapTien=view.findViewById(R.id.btnLichSuNapTien);
         btnLichSuSMS=view.findViewById(R.id.btnLichSuSMS);
         imgTuNgay=view.findViewById(R.id.imgDate);
@@ -72,50 +75,29 @@ public class FragmentLichSu  extends Fragment implements View.OnClickListener{
         frLichSuNapTien=view.findViewById(R.id.frLichSuNapTien);
         frLichSuSms=view.findViewById(R.id.frlichSuSms);
         lntieptheo=view.findViewById(R.id.lntieptheo);
-
-
-       //********************
-        recyclerView=view.findViewById(R.id.rcLichSuSMS);
         btnPre=view.findViewById(R.id.Previous);
         btnNext=view.findViewById(R.id.Next);
+        recyclerView=view.findViewById(R.id.rcLichSuSMS);
+
 
         btnPre.setOnClickListener(this);
         btnNext.setOnClickListener(this);
-
-
-        //**************************
-
         btnLichSuNapTien.setOnClickListener(this);
         btnLichSuSMS.setOnClickListener(this);
         imgTuNgay.setOnClickListener(this);
         imgDenNgay.setOnClickListener(this);
 
-        date1=edtStartDate.getText().toString();
-        date2=edtEnddate.getText().toString();
 
-
-
+        sdf=new SimpleDateFormat("dd-MM-YYYY");
 
          //todo:lấy token
         getToken();
         //todo:gán toolbar cho fragment
-        AppCompatActivity activity =    (AppCompatActivity) getActivity();
-        activity.setSupportActionBar(toolbar);
-        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        mTitle =toolbar.findViewById(R.id.toolbar_title);
-        mTitle.setText("LỊCH SỬ");
-        toolbar.setTitle("");
-
-
-
-
-
-
+        toolbar();
         //tạo sự kiện cho toolbar
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent iHome=new Intent(getActivity(),HomeActivity.class);
                 iHome.putExtra("token",token);
                 iHome.putExtra("time",thoiGian);
@@ -125,16 +107,54 @@ public class FragmentLichSu  extends Fragment implements View.OnClickListener{
             }
         });
         return view;
-    }
+         }
+
+        private void toolbar() {
+            AppCompatActivity activity =    (AppCompatActivity) getActivity();
+            activity.setSupportActionBar(toolbar);
+            activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            mTitle =toolbar.findViewById(R.id.toolbar_title);
+            mTitle.setText("LỊCH SỬ");
+            toolbar.setTitle("");
+        }
 
 
-    @Override
+       @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnLichSuNapTien:
 
                 frLichSuSms.setVisibility(View.GONE);
                 frLichSuNapTien.setVisibility(View.VISIBLE);
+
+
+                try {
+                    Date date1=sdf.parse(edtStartDate.getText().toString());
+                    Date date2=sdf.parse(edtEnddate.getText().toString());
+
+                   
+                    if (date1.after(date2)) {
+                        Toast.makeText(getActivity(), "Sai định dạng ngày !!", Toast.LENGTH_SHORT).show();
+                    }
+
+
+                    else if (edtStartDate.length() == 0 || edtEnddate.length() == 0)
+                    {
+                        Toast.makeText(getActivity(), "Bạn cần phải nhập vào ngày !!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        //Put data
+                        lichSuNapTien();
+                        lntieptheo.setVisibility(View.VISIBLE);
+                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                break;
+
+            case R.id.btnLichSuSMS:
+                frLichSuNapTien.setVisibility(View.GONE);
+                frLichSuSms.setVisibility(View.VISIBLE);
 
                 if (edtStartDate.getText().toString().compareTo(edtEnddate.getText().toString())>0) {
                     Toast.makeText(getActivity(), "Sai định dạng ngày !!", Toast.LENGTH_SHORT).show();
@@ -146,35 +166,16 @@ public class FragmentLichSu  extends Fragment implements View.OnClickListener{
                     Toast.makeText(getActivity(), "Bạn cần phải nhập vào ngày !!", Toast.LENGTH_SHORT).show();
                 } else {
                     //Put data
-                    lichSuNapTien();
+                    getHistory();
                     lntieptheo.setVisibility(View.VISIBLE);
+
                 }
-                break;
-
-            case R.id.btnLichSuSMS:
-                frLichSuNapTien.setVisibility(View.GONE);
-                frLichSuSms.setVisibility(View.VISIBLE);
-
-               if (edtStartDate.getText().toString().compareTo(edtEnddate.getText().toString())>0) {
-                       Toast.makeText(getActivity(), "Sai định dạng ngày !!", Toast.LENGTH_SHORT).show();
-                   }
-
-
-                 else if (edtStartDate.length() == 0 || edtEnddate.length() == 0)
-                     {
-                       Toast.makeText(getActivity(), "Bạn cần phải nhập vào ngày !!", Toast.LENGTH_SHORT).show();
-                     } else {
-                               //Put data
-                               getHistory();
-                                 lntieptheo.setVisibility(View.VISIBLE);
-
-                   }
                 break;
 
             case R.id.imgDate:
                 TuNgay();
                 break;
-                
+
             case R.id.imgDate2:
                 DenNgay();
                 break;
@@ -206,19 +207,19 @@ public class FragmentLichSu  extends Fragment implements View.OnClickListener{
         int psPagerec=2;
         //String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjcmVhdGVkQXQiOjE1NTk3MjY4NTIsInVzZXJJZCI6InRoYW5ncGgifQ.i1Rheu3ahWZ15i5B1VNTOrXHigj_dggD-idbdo2lXHc";
         RetroClient.lichSuNapTien(constr, psMsisdn, psStartdate, psEnddate,psPageno,psPagerec, token, new Callback<List<ModelLichSuNapTien>>() {
-    @Override
-    public void onResponse(Call<List<ModelLichSuNapTien>> call, Response<List<ModelLichSuNapTien>> response) {
-        lichSuNapTienList=response.body();
-        HienThiLichSuNapTien();
+            @Override
+            public void onResponse(Call<List<ModelLichSuNapTien>> call, Response<List<ModelLichSuNapTien>> response) {
+                lichSuNapTienList=response.body();
+                hienThiLichSuNapTien();
 
-    }
+            }
 
-    @Override
-    public void onFailure(Call<List<ModelLichSuNapTien>> call, Throwable t) {
-        Toast.makeText(getActivity(),"Vui lòng kết nối Internet .",Toast.LENGTH_SHORT).show();
+            @Override
+            public void onFailure(Call<List<ModelLichSuNapTien>> call, Throwable t) {
+                Toast.makeText(getActivity(),"Vui lòng kết nối Internet .",Toast.LENGTH_SHORT).show();
 
-    }
-});
+            }
+        });
 
     }
 
@@ -235,13 +236,13 @@ public class FragmentLichSu  extends Fragment implements View.OnClickListener{
         String psEnddate = edtEnddate.getText().toString();
         int psPageno=currentPage;
         int psPagerec=3;
-      //  String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjcmVhdGVkQXQiOjE1NTk3MjY4NTIsInVzZXJJZCI6InRoYW5ncGgifQ.i1Rheu3ahWZ15i5B1VNTOrXHigj_dggD-idbdo2lXHc";
+        //  String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjcmVhdGVkQXQiOjE1NTk3MjY4NTIsInVzZXJJZCI6InRoYW5ncGgifQ.i1Rheu3ahWZ15i5B1VNTOrXHigj_dggD-idbdo2lXHc";
 
         RetroClient.lichSuSms(constr, psMsisdn, psStartdate, psEnddate,psPageno,psPagerec, token, new Callback<List<ModelSms>>() {
             @Override
             public void onResponse(Call<List<ModelSms>> call, Response<List<ModelSms>> response) {
-               smsList=response.body();
-               HienThiLichSuSms();
+                smsList=response.body();
+                hienThiLichSuSms();
 
             }
 
@@ -255,7 +256,7 @@ public class FragmentLichSu  extends Fragment implements View.OnClickListener{
 
 
 
-    private void HienThiLichSuNapTien() {
+    private void hienThiLichSuNapTien() {
         RecyclerView rcLichSuNapTien=getView().findViewById(R.id.rcLichSuNapTien);
         layoutManager=new LinearLayoutManager(getContext());
         rcLichSuNapTien.setLayoutManager(layoutManager);
@@ -263,7 +264,7 @@ public class FragmentLichSu  extends Fragment implements View.OnClickListener{
         rcLichSuNapTien.setAdapter(adapterLichSuNapTien);
     }
 
-    private void HienThiLichSuSms() {
+    private void hienThiLichSuSms() {
         RecyclerView rcLichSuSms=getView().findViewById(R.id.rcLichSuSMS);
         layoutManager=new LinearLayoutManager(getContext());
         rcLichSuSms.setLayoutManager(layoutManager);
@@ -282,8 +283,7 @@ public class FragmentLichSu  extends Fragment implements View.OnClickListener{
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 calendar.set(year,monthOfYear,dayOfMonth);
-                SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd-MM-YYYY");
-                edtEnddate.setText(simpleDateFormat.format(calendar.getTime()));
+                edtEnddate.setText(sdf.format(calendar.getTime()));
             }
         }, year, month, day);
         datePickerDialog.show();
@@ -298,10 +298,9 @@ public class FragmentLichSu  extends Fragment implements View.OnClickListener{
         DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), AlertDialog.THEME_DEVICE_DEFAULT_LIGHT, new OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                  calendar.set(year,monthOfYear,dayOfMonth);
-                  SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd-MM-YYYY");
-              
-                edtStartDate.setText(simpleDateFormat.format(calendar.getTime()));
+                calendar.set(year,monthOfYear,dayOfMonth);
+
+                edtStartDate.setText(sdf.format(calendar.getTime()));
             }
         }, year, month, day);
         datePickerDialog.show();
