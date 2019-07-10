@@ -42,19 +42,14 @@ public class ThemHoTroActivity extends AppCompatActivity implements View.OnClick
     Spinner spNCCThemHoTro,spDVThemHoTro,spGoiCuocThemHoTro;
 
     Toolbar toolbar;
-    String psPartner_id;
-    String gamelist_id;
-    String sub_id;
-    String idncc="";
-    String thoigian;
-
+    String psPartner_id,gamelist_id,sub_id,idncc,thoigian;
 
     private JSONArray jsonArray,jsonDichVu,jsonGoiCuoc;
     private ArrayList<ModelNCC> arrayList;
     private ArrayList<ModelDV> arrayDichVu;
     private ArrayList<ModelGoiCuoc> arrayListGoiCuoc;
 
-    private ArrayList<String> playerNames= new ArrayList<String>();
+    private ArrayList<String> nhaCC = new ArrayList<String>();
     private ArrayList<String> dichVu= new ArrayList<String>();
     private ArrayList<String> goiCuoc= new ArrayList<String>();
 
@@ -346,18 +341,15 @@ public class ThemHoTroActivity extends AppCompatActivity implements View.OnClick
                 arrayList.add(modelNCC);
 
             }
-        playerNames.clear();
+        nhaCC.clear();
         for (int i=0;i<arrayList.size();i++)
         {
-            playerNames.add(arrayList.get(i).getPARTNER_NAME().toString());
+            nhaCC.add(arrayList.get(i).getPARTNER_NAME().toString());
         }
 
-        ArrayAdapter<String> spAdapter=new ArrayAdapter<String>(ThemHoTroActivity.this,android.R.layout.simple_spinner_item,playerNames);
+        ArrayAdapter<String> spAdapter=new ArrayAdapter<String>(ThemHoTroActivity.this,android.R.layout.simple_spinner_item, nhaCC);
         spAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spNCCThemHoTro.setAdapter(spAdapter);
-
-
-
         } catch (JSONException e) {
             e.printStackTrace();
         }

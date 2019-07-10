@@ -1,6 +1,5 @@
 package com.example.ctt2019.Activity;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -26,7 +25,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 
 public class FrangmentDVhot extends Fragment  {
     TextView mTitle;
@@ -57,14 +55,8 @@ public class FrangmentDVhot extends Fragment  {
                 getActivity().overridePendingTransition(R.anim.anim_enter,R.anim.anim_exit);
             }
         });
-
-
         recyclerView=view.findViewById(R.id.rcDichVuHot);
-
-
         get_hot_service();
-
-
         return view;
     }
 

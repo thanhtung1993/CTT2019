@@ -49,8 +49,11 @@
             android:theme="@style/AlertDialogNoTitle"/>
         <activity android:name=".Diaglog.DiaglogXacNhanThanhCong"
             android:theme="@style/AlertDialogNoTitle"/>
-        <activity android:name=".Activity.SuaHoTroActivity"/>
+        <activity android:name=".Activity.SuaHoTroActivity"
+            android:theme="@style/AlertDialogNoTitle"/>
         <activity android:name=".Activity.XacNhanXoaActivity"
+            android:theme="@style/AlertDialogNoTitle"/>
+        <activity android:name=".Activity.SuaBinhLuanActivity"
             android:theme="@style/AlertDialogNoTitle"/>
 
 

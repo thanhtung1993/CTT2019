@@ -88,9 +88,7 @@ public class AdapterLichSuNapTien extends RecyclerView.Adapter {
                 {
                     e.printStackTrace();
                 }
-
                         }
-
     }
 
 

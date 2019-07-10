@@ -2,8 +2,6 @@ package com.example.ctt2019.Activity;
 
 
 import android.app.Dialog;
-
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -14,9 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,9 +40,6 @@ public class FragmentNapTien extends Fragment implements View.OnClickListener {
         btnTiepTheo.setOnClickListener(this);
         btnDangKy.setOnClickListener(this);
 
-
-
-
         Toolbar();
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,12 +52,6 @@ public class FragmentNapTien extends Fragment implements View.OnClickListener {
         });
 
         return view;
-
-
-
-
-
-
     }
 
     private void getToken()
@@ -98,10 +85,6 @@ public class FragmentNapTien extends Fragment implements View.OnClickListener {
                  Intent iNapTien=new Intent(getActivity(), NapTienGameActivity.class);
                  startActivity(iNapTien);
                  break;
-
-
-
-
          }
     }
 }

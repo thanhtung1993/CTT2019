@@ -41,22 +41,14 @@ public class NapTienGameActivity extends AppCompatActivity implements View.OnCli
     Button btnNapTien,btnDangKyGoi;
     Spinner spNCCGame,spDichVuGame,spGoiCuocGame;
     EditText edtSoTien,edtTaiKhoan;
-    String spncc,spDV,spGoiCuoc;
-    private String token;
-    String thoiGian,ncc;
-
-
-    String gamelist_id;
-    String sub_id;
-    String idncc="";
-
+    String spncc,spDV,spGoiCuoc,thoiGian,ncc,token,gamelist_id,idncc;
 
     private JSONArray jsonArray,jsonDichVu,jsonGoiCuoc;
     private ArrayList<ModelNCC> arrayList;
     private ArrayList<ModelDV> arrayDichVu;
     private ArrayList<ModelGoiCuoc> arrayListGoiCuoc;
 
-    private ArrayList<String> playerNames= new ArrayList<String>();
+    private ArrayList<String> nhaCC= new ArrayList<String>();
     private ArrayList<String> dichVu= new ArrayList<String>();
     private ArrayList<String> goiCuoc= new ArrayList<String>();
     @Override
@@ -121,7 +113,6 @@ public class NapTienGameActivity extends AppCompatActivity implements View.OnCli
        }
    });
 
-   //
         spGoiCuocGame.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -208,7 +199,6 @@ public class NapTienGameActivity extends AppCompatActivity implements View.OnCli
                     Log.i("datadichvu",jsonDV);
                 }
             }
-
         }
 
         @Override
@@ -281,7 +271,6 @@ public class NapTienGameActivity extends AppCompatActivity implements View.OnCli
         RetroClient.get_all_partners(constr, token, new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                Log.i("naptien",response.body().toString());
                 if (response.isSuccessful())
                 {
                     if (response.body()!=null)
@@ -315,13 +304,13 @@ public class NapTienGameActivity extends AppCompatActivity implements View.OnCli
 
 
             }
-            playerNames.clear();
+            nhaCC.clear();
             for (int i=0;i<arrayList.size();i++)
             {
-                playerNames.add(arrayList.get(i).getPARTNER_NAME().toString());
+                nhaCC.add(arrayList.get(i).getPARTNER_NAME().toString());
             }
 
-            ArrayAdapter<String> spAdapter=new ArrayAdapter<String>(NapTienGameActivity.this,android.R.layout.simple_spinner_item,playerNames);
+            ArrayAdapter<String> spAdapter=new ArrayAdapter<String>(NapTienGameActivity.this,android.R.layout.simple_spinner_item, nhaCC);
             spAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
             spNCCGame.setAdapter(spAdapter);

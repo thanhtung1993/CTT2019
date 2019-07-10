@@ -54,12 +54,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
 
-    /* public void time()
+   /* public void time()
      {
          new CountDownTimer(60000,1000){
              @Override
              public void onTick(long millisUntilFinished) {
-                 txtDTHome.setText("Con lai: "+ millisUntilFinished/1000+" s");
+                 txt.setText("Con lai: "+ millisUntilFinished/1000+" s");
 
              }
 
@@ -74,13 +74,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnLogin:
-              //  Intent idangnhap=new Intent(LoginActivity.this,HomeActivity.class);
-              //  startActivity(idangnhap);
                 dangNhap();
                 layThoiGianHienTai();
                 break;
             case R.id.btnGuiOTP:
-               // txtOTP.setVisibility(View.VISIBLE);
                 Toast.makeText(LoginActivity.this,"Mã OTP đã được gửi tới điện thoại của quý khách .Vui lòng nhập mã OTP để tiếp tục đăng nhập !",Toast.LENGTH_LONG).show();
                 break;
         }
@@ -93,13 +90,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
       RetroClient.login(user, pass, new Callback<ResponseBody>() {
           @Override
           public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-              /*{"userId":"thangph","password":"e10adc3949ba59abbe56e057f20f883e","token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjcmVhdGVkQXQiOjE1NjAyMjU0NjcsInVzZXJJZCI6InRoYW5ncGgifQ.0Vw1UeqJ4X_GxrF_c5WprcmjuB1HSyYBmAhzOGI0EbY"}*/
 
               try {
                   JSONObject object=new JSONObject(response.body().string());
                   String token=object.optString("token","");
                   gotomain(token);
-                 // Toast.makeText(LoginActivity.this,"ok"+object,Toast.LENGTH_SHORT).show();
+
               } catch (JSONException e) {
                   e.printStackTrace();
               } catch (IOException e) {
@@ -127,8 +123,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         Calendar calendar=Calendar.getInstance();
         SimpleDateFormat sdf=new SimpleDateFormat("hh:mm a");
         currentDate = sdf.format(calendar.getTime());
-        Toast.makeText(LoginActivity.this,"Giờ :"+currentDate,Toast.LENGTH_LONG).show();
-
     }
 
 }

@@ -32,10 +32,8 @@ import com.example.ctt2019.Model.Lichsunaptien.ModelLichSuNapTien;
 import com.example.ctt2019.Model.Lichsusms.ModelSms;
 import com.example.ctt2019.R;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -121,34 +119,21 @@ public class FragmentLichSu  extends Fragment implements View.OnClickListener{
 
        @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btnLichSuNapTien:
+           switch (v.getId()) {
+               case R.id.btnLichSuNapTien:
 
-                frLichSuSms.setVisibility(View.GONE);
-                frLichSuNapTien.setVisibility(View.VISIBLE);
+                   frLichSuSms.setVisibility(View.GONE);
+                   frLichSuNapTien.setVisibility(View.VISIBLE);
 
-
-                try {
-                    Date date1=sdf.parse(edtStartDate.getText().toString());
-                    Date date2=sdf.parse(edtEnddate.getText().toString());
-
-                   
-                    if (date1.after(date2)) {
-                        Toast.makeText(getActivity(), "Sai định dạng ngày !!", Toast.LENGTH_SHORT).show();
-                    }
-
-
-                    else if (edtStartDate.length() == 0 || edtEnddate.length() == 0)
-                    {
-                        Toast.makeText(getActivity(), "Bạn cần phải nhập vào ngày !!", Toast.LENGTH_SHORT).show();
-                    } else {
-                        //Put data
-                        lichSuNapTien();
-                        lntieptheo.setVisibility(View.VISIBLE);
-                    }
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
+                   if (edtStartDate.getText().toString().compareTo(edtEnddate.getText().toString()) > 0) {
+                       Toast.makeText(getActivity(), "Sai định dạng ngày !!", Toast.LENGTH_SHORT).show();
+                   } else if (edtStartDate.length() == 0 || edtEnddate.length() == 0) {
+                       Toast.makeText(getActivity(), "Bạn cần phải nhập vào ngày !!", Toast.LENGTH_SHORT).show();
+                   } else {
+                       //Put data
+                       lichSuNapTien();
+                       lntieptheo.setVisibility(View.VISIBLE);
+                   }
 
                 break;
 
@@ -183,6 +168,7 @@ public class FragmentLichSu  extends Fragment implements View.OnClickListener{
             case R.id.Next:
 
                 currentPage=currentPage+1;
+
                 lichSuNapTien();
                 getHistory();
 
@@ -191,8 +177,10 @@ public class FragmentLichSu  extends Fragment implements View.OnClickListener{
                 break;
             case R.id.Previous:
                 currentPage=currentPage-1;
-                getHistory();
-                lichSuNapTien();
+
+                    getHistory();
+                    lichSuNapTien();
+
                 break;
         }
 

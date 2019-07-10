@@ -42,11 +42,9 @@ public class HomeActivity extends AppCompatActivity {
     private String token=null;
     BottomNavigationViewEx navigationViewEx;
     String ten;
-    Menu menu;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
         Fragment fragment;
 
         @Override
@@ -95,7 +93,6 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_home);
 
-
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -130,12 +127,7 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(iHoTro);
             }
         });
-
-
-
-
         BottomNavigationView navigationView = findViewById(R.id.navigation);
-
         navigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         //tạo click cho toolbar
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

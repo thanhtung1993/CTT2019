@@ -23,7 +23,6 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 public class RetroClient {
     public static final String SERVER = Config.BASE_URL;
     private static Retrofit retrofit = null;
-
     public static Retrofit getClient() {
 
         retrofit = new Retrofit.Builder()

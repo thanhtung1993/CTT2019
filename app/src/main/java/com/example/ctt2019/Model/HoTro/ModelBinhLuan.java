@@ -8,9 +8,27 @@ public class ModelBinhLuan {
     private String ACTIVE;
     private String SUB_ID;
     private String ID;
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
     private String DESCRIBE;
     private String PARTNER_ID;
     private String PARENT_ID;
+    private String MSISDN;
+
+    public String getMSISDN() {
+        return MSISDN;
+    }
+
+    public void setMSISDN(String MSISDN) {
+        this.MSISDN = MSISDN;
+    }
 
     public String getRESPONDENT() {
         return RESPONDENT;
@@ -60,13 +78,7 @@ public class ModelBinhLuan {
         this.SUB_ID = SUB_ID;
     }
 
-    public String getID() {
-        return ID;
-    }
 
-    public void setID(String ID) {
-        this.ID = ID;
-    }
 
     public String getDESCRIBE() {
         return DESCRIBE;

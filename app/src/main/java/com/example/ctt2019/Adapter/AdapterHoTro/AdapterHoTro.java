@@ -34,9 +34,7 @@ public class AdapterHoTro extends RecyclerView.Adapter<AdapterHoTro.ViewHolder> 
     Context context;
     List<ModelHoTro> modelHoTroList;
     String token;
-    String ten;
-    String psMsisdn1,psPartner_id,psGamelist_id,psSub_id;
-    String psParentid,demBinhLuan;
+    String ten,thoiGian,ID;
 
     public AdapterHoTro(Context context, List<ModelHoTro> modelHoTroList) {
         this.context = context;
@@ -51,9 +49,6 @@ public class AdapterHoTro extends RecyclerView.Adapter<AdapterHoTro.ViewHolder> 
         public TextView txtDemBinhLuan;
         public TextView txtEdit;
         public TextView txtDelete;
-
-
-
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -75,56 +70,53 @@ public class AdapterHoTro extends RecyclerView.Adapter<AdapterHoTro.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
        final ModelHoTro modelHoTro=modelHoTroList.get(i);
-      if (modelHoTro.getSTATUS().equals("Câu hỏi"))
-       {
+      if (modelHoTro.getSTATUS().equals("Câu hỏi")) {
           viewHolder.txtStatus.setText(modelHoTro.getDESCRIBE());
-          viewHolder.txtThoiGianHoTro.setText("Đã gửi lúc "+modelHoTro.getDESCRIBE_DATE());
-       }
-        getCount();
+          viewHolder.txtThoiGianHoTro.setText("Đã gửi lúc " + modelHoTro.getDESCRIBE_DATE());
+      }
         //bình luận
-        viewHolder.txtBinhLuan.setOnClickListener(new View.OnClickListener() {
-         @Override
-         public void onClick(View v) {
+                   viewHolder.txtBinhLuan.setOnClickListener(new View.OnClickListener() {
+                       @Override
+                       public void onClick(View v) {
 
-                 //Toast.makeText(context,"bạn chọn"+modelHoTro.getID(),Toast.LENGTH_LONG).show();
-                 Intent iThemBinhLuan = new Intent(context, TraLoiHoTroActivity.class);
-                 iThemBinhLuan.putExtra("psMsisdn", psMsisdn1);
-                 iThemBinhLuan.putExtra("psPartner_id", psPartner_id);
-                 iThemBinhLuan.putExtra("psGamelist_id", psGamelist_id);
-                 iThemBinhLuan.putExtra("psSub_id", psSub_id);
-                 iThemBinhLuan.putExtra("psParent_id",modelHoTro.getID());
-                 iThemBinhLuan.putExtra("token", token);
-                 context.startActivity(iThemBinhLuan);
-             }
+                           Intent iThemBinhLuan = new Intent(context, TraLoiHoTroActivity.class);
+                           iThemBinhLuan.putExtra("psMsisdn", modelHoTro.getMSISDN());
+                           iThemBinhLuan.putExtra("psPartner_id", modelHoTro.getPARTNER_ID());
+                           iThemBinhLuan.putExtra("psGamelist_id", modelHoTro.getGAMELIST_ID());
+                           iThemBinhLuan.putExtra("psSub_id", modelHoTro.getSUB_ID());
+                           iThemBinhLuan.putExtra("psParent_id", modelHoTro.getID());
+                           iThemBinhLuan.putExtra("token", token);
+                           iThemBinhLuan.putExtra("time", thoiGian);
+                           iThemBinhLuan.putExtra("ten", ten);
+                           context.startActivity(iThemBinhLuan);
+
+                       }
+                   });
+            // sửa
+            viewHolder.txtEdit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, SuaHoTroActivity.class);
+                    intent.putExtra("psId", modelHoTro.getID());
+                    intent.putExtra("psPartner_id", modelHoTro.getPARTNER_ID());
+                    intent.putExtra("psGamelist_id", modelHoTro.getGAMELIST_ID());
+                    intent.putExtra("psSub_id", modelHoTro.getSUB_ID());
+                    intent.putExtra("token", token);
+                    context.startActivity(intent);
+                }
+            });
+            //xóa
+            viewHolder.txtDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, XacNhanXoaActivity.class);
+                    intent.putExtra("token", token);
+                    intent.putExtra("id", modelHoTro.getID());
+                    context.startActivity(intent);
 
 
-     });
-
-        // sửa
-        viewHolder.txtEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(context, SuaHoTroActivity.class);
-                intent.putExtra("psId",modelHoTro.getID());
-                intent.putExtra("psPartner_id",modelHoTro.getPARTNER_ID());
-                intent.putExtra("psGamelist_id","a");
-                intent.putExtra("psSub_id",modelHoTro.getSUB_ID());
-                intent.putExtra("token",token);
-                context.startActivity(intent);
-            }
-        });
-        //xóa
-        viewHolder.txtDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               Intent intent=new Intent(context, XacNhanXoaActivity.class);
-               intent.putExtra("token",token);
-               intent.putExtra("id",modelHoTro.getID());
-               context.startActivity(intent);
-
-
-            }
-        });
+                }
+            });
 
     //đếm số lượng cm
         String csonstr="get_count_comment";
@@ -140,9 +132,9 @@ public class AdapterHoTro extends RecyclerView.Adapter<AdapterHoTro.ViewHolder> 
                         JSONArray jsonArray=new JSONArray(body);
                         if (jsonArray.length()>0)
                         {
-                            JSONObject object=jsonArray.getJSONObject(0);
-                            String  demBinhLuan=object.optString("AMOUNT");
-                            viewHolder.txtDemBinhLuan.setText(demBinhLuan + " Comment ");
+                             JSONObject object=jsonArray.getJSONObject(0);
+                             viewHolder.txtDemBinhLuan.setText("("+object.optInt("AMOUNT")+")");
+
                         }
 
                     } catch (IOException e) {
@@ -158,8 +150,6 @@ public class AdapterHoTro extends RecyclerView.Adapter<AdapterHoTro.ViewHolder> 
 
             }
         });
-
-        // getDataSupport();
 
       //todo: set tên người gửi
         String constr="get_customer_infor";
@@ -178,9 +168,7 @@ public class AdapterHoTro extends RecyclerView.Adapter<AdapterHoTro.ViewHolder> 
                             JSONObject object=jsonArray.getJSONObject(0);
                             if (object!=null)
                             {
-                                String sdt=object.optString("MSISDN");
-                                String  ten=object.optString("NAME");
-
+                                 ten=object.optString("NAME");
                                  viewHolder.txtTenHoTro.setText(ten);
                             }
                         }
@@ -197,14 +185,7 @@ public class AdapterHoTro extends RecyclerView.Adapter<AdapterHoTro.ViewHolder> 
 
             }
         });
-
       viewHolder.txtTenHoTro.setText(ten);
-
-
-
-
-
-        // viewHolder.txtStatus.setText("Nội dung được viết ở đây");
     }
 
     @Override
@@ -215,12 +196,15 @@ public class AdapterHoTro extends RecyclerView.Adapter<AdapterHoTro.ViewHolder> 
 
     public void setData(String data) {
 
-       token=data;
+        token=data;
+    }
+    public void setTime(String data) {
+
+        thoiGian=data;
     }
 
-    public void getCount()
-    {
-    }
+
+
 
     }
 

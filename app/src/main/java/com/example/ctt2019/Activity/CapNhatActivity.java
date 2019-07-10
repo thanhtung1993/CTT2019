@@ -26,9 +26,7 @@ import retrofit2.Response;
 public class CapNhatActivity extends AppCompatActivity implements View.OnClickListener {
     Button btnCapNhat;
     TextView txtDTCN,txtTenCN;
-    String token=null;
-    String sdt;
-    String thoiGian;
+    String token,sdt,thoiGian,ten;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,7 +58,7 @@ public class CapNhatActivity extends AppCompatActivity implements View.OnClickLi
                             if (object!=null)
                             {
                                 sdt=object.optString("MSISDN");
-                                String ten=object.optString("NAME");
+                                ten=object.optString("NAME");
 
                                 txtDTCN.setText(sdt);
                                 txtTenCN.setText(ten);
@@ -81,16 +79,14 @@ public class CapNhatActivity extends AppCompatActivity implements View.OnClickLi
         });
     }
 
-
     private void getToken()
     {
         Intent intent=getIntent();
         if (intent!=null)
         {
             token=intent.getStringExtra("token");
+            thoiGian=intent.getStringExtra("time");
         }
-        thoiGian=intent.getStringExtra("time");
-
     }
     @Override
     public void onClick(View v) {

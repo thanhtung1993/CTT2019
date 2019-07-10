@@ -26,11 +26,7 @@ import retrofit2.http.Query;
 
 
 public interface ApiService {
-    //@FormUrlEncoded
-     //Lấy lịch sử sms theo ngày
-   // @Headers({"Content-Type:application/json"})
-   // @POST(Config.SMS)
-   // Call<List<ModelSms>> LayLichSuSms(@Body Map<String, String> params);
+
     //todo:login
     @FormUrlEncoded
     @POST(Config.login)
@@ -46,10 +42,6 @@ public interface ApiService {
     @GET(Config.SERVER)
     Call<List<ModelGoiCuocSuDung>> goiCuocHot(@Query("constr") String constr, @Query("psMsisdn") String psMsisdn, @HeaderMap Map<String,String> header);
     //
-    // get home
-    @GET(Config.SERVER)
-    Call<ResponseBody> getHome (@Query("constr") String constr, @Query("psMsisdn") String psMsisdn, @HeaderMap Map<String,String> header);
-
     //todo:lay lich su sms
     @GET(Config.SERVER)
     Call<List<ModelSms>> lichsusms(@Query("constr") String constr,
@@ -109,8 +101,6 @@ public interface ApiService {
                                       @Query("psGamelist_id") String psGamelist_id,
                                       @HeaderMap Map<String, String> headers);
 
-
-
     //todo:Hiển thị thông tin
     @GET(Config.SERVER)
     Call<ResponseBody> get_customer_infor(@Query("constr") String constr,
@@ -120,7 +110,6 @@ public interface ApiService {
     @POST(Config.UPDATE_INSERT)
     Call<JsonObject> update_infor(@Body JsonObject body,
                                   @HeaderMap Map<String, String> headers);
-
 
    //todo: đăng kí gói cước / hủy gói cước
     @Headers({"Content-Type:application/json"})
@@ -133,8 +122,6 @@ public interface ApiService {
                                                 @Query("psMsisdn") String psMsisdn,
                                                 @Query("psParent_id") String psParent_id,
                                                 @HeaderMap Map<String, String> headers);
-
-
 
     //todo: đếm bình luận
      @GET(Config.SERVER)

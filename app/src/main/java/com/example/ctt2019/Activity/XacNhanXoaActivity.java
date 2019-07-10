@@ -17,7 +17,7 @@ import retrofit2.Response;
 
 public class XacNhanXoaActivity extends AppCompatActivity implements View.OnClickListener{
     Button btnXacNhanXoa,btnTroLai;
-    String token,ID;
+    String token,ID,thoiGian;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +36,7 @@ public class XacNhanXoaActivity extends AppCompatActivity implements View.OnClic
         {
             token=intent.getStringExtra("token");
             ID=intent.getStringExtra("id");
+            thoiGian=intent.getStringExtra("time");
         }
     }
 
@@ -62,13 +63,12 @@ public class XacNhanXoaActivity extends AppCompatActivity implements View.OnClic
                 });
                 Intent intent=new Intent(XacNhanXoaActivity.this,HoTroActivity.class);
                 intent.putExtra("token",token);
+                intent.putExtra("time",thoiGian);
                 startActivity(intent);
 
                 break;
             case R.id.btnTroLai:
-                Intent itrolai=new Intent(XacNhanXoaActivity.this,HoTroActivity.class);
-                itrolai.putExtra("token",token);
-                startActivity(itrolai);
+                finish();
                 break;
         }
     }

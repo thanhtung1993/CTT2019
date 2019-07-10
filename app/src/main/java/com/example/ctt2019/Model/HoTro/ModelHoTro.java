@@ -12,6 +12,15 @@ public class ModelHoTro {
     private String ID;
     private String RESPONDENT;
     private String STATUS;
+    private String GAMELIST_ID;
+
+    public String getGAMELIST_ID() {
+        return GAMELIST_ID;
+    }
+
+    public void setGAMELIST_ID(String GAMELIST_ID) {
+        this.GAMELIST_ID = GAMELIST_ID;
+    }
 
     public String getSTATUS() {
         return STATUS;

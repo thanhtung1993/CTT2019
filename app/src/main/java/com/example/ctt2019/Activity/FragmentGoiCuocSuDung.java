@@ -1,5 +1,4 @@
 package com.example.ctt2019.Activity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,14 +12,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.example.ctt2019.API.RetroClient;
 import com.example.ctt2019.Adapter.AdapterGoiCuocSuDung.AdapterGoiCuocSuDung;
 import com.example.ctt2019.Model.GoiCuocSuDung.ModelGoiCuocSuDung;
 import com.example.ctt2019.R;
-
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

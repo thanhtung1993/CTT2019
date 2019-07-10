@@ -28,9 +28,7 @@ public class CapNhatThongTinActivity  extends AppCompatActivity implements View.
     TextView mTitle,txtSDT;
     Button btnCapNhatThanhCong;
     EditText edtTenNguoiDung;
-    String token=null;
-    String dienthoai;
-    String thoiGian;
+    String token,dienthoai,thoiGian;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +59,6 @@ public class CapNhatThongTinActivity  extends AppCompatActivity implements View.
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-      //
         txtSDT.setText(dienthoai);
     }
 
@@ -95,6 +92,7 @@ public class CapNhatThongTinActivity  extends AppCompatActivity implements View.
                         //chuyển từ màn hình dialog xang activity
                            Intent ihome=new Intent(getApplicationContext(),HomeActivity.class);
                            ihome.putExtra("token",token);
+                           ihome.putExtra("time",thoiGian);
                            startActivity(ihome);
 
                     }
